@@ -2,11 +2,32 @@ int pxlSizeX = 5;
 int pxlSizeY = 5;
 int pxlCountX = 256;
 int pxlCountY = 1;
+element[] [] grid = new element[pxlCountX] [pxlCountY];
 
+void settings(){
+    size(pxlSizeX * pxlCountX,pxlSizeY * pxlCountY);
+}
 
 void setup(){
-  size(pxlSizeX * pxlCountX,pxlSizeY * pxlCountY);
- 
+  element temp;
+  int tempInt;
+
+  
+  for (int i = grid.length - 1; i > 1; i--){
+    for (int j= grid[i].length - 1; j>1; j--){
+      grid[i][j].init(j);
+    }
+  }
+  
+  for (int i = grid.length - 1; i > 1; i--){
+    for (int j= grid[i].length - 1; j > 1; j--){
+      tempInt = int(random(0,pxlCountX));
+      temp = grid[i][j];
+      grid[i][j] = grid[i][tempInt];
+      grid[i][tempInt] = temp;
+    }
+  }
+  
 }
 
 void draw(){
@@ -16,7 +37,9 @@ void draw(){
 class element{
   float hueValue;
   int number;
-  element(int num){
+  element(){
+  }
+  void init(int num){
     number = num;
     hueValue = 360/pxlCountX * num;
   }
