@@ -12,3 +12,15 @@ void setup(){
 void draw(){
 
 }
+
+class element{
+  float hueValue;
+  int number;
+  element(int num){
+    number = num;
+    hueValue = 360/pxlCountX * num;
+  }
+  float getHueValue(){
+    return hueValue;
+  }
+}
