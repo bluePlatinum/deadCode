@@ -25,18 +25,14 @@ void setup(){
 }
 
 void draw(){
-  boolean allSorted = false;
-  while (!allSorted){
-    allSorted = true;
     for (int i = 0; i < pxlCountY; i++){
       switch (i){
         case 0:
-          if(!sorter0(i)){allSorted = false;}
+          sorter0(i);
           break;
         }
       display();
       }
-    }
   }
 
 void keyPressed(){
@@ -48,11 +44,15 @@ void keyPressed(){
 
 boolean sorter0(int i){
   element temp;
-  for(int j = 0; j < grid[i].length; j++){
-    if(grid[i][j].getHueValue() > grid[i][j++].getHueValue()){
+  for(int j = 0; j < grid[i].length - 1; j++){
+    println(grid[i][j].getHueValue());
+    println(grid[i][j+1].getHueValue());
+    println(grid[i][j].getHueValue() > grid[i][j+1].getHueValue());
+    if(grid[i][j].getHueValue() > grid[i][j+1].getHueValue()){
       temp = grid[i][j];
-      grid[i][j] = grid[i][j++];
-      grid[i][j++] = temp;
+      grid[i][j] = grid[i][j+1];
+      grid[i][j+1] = temp;
+      println("test");
       return false;
     }
   }
