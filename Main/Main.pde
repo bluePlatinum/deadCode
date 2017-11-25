@@ -3,15 +3,6 @@ int pxlSizeY = 15;
 int pxlCountX = 64;
 int pxlCountY = 20;
 element[] [] grid = new element[pxlCountY] [pxlCountX];
-
-
-//sorter 1 global variables
-float[] sorter1Maxima = {pxlCountX - 1, pxlCountX};
-int[] sorter1BlockLog;
-int sorter1BlockSize = 5;
-boolean sorter1Setup = false;
-//end
-
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
 int[] swaps = new int[pxlCountY];
 
@@ -62,21 +53,6 @@ void sorter0(int i){
   return;
 }
 
-boolean sorter1(int i){
-  if (sorter1Setup == false){
-    for (int j = 0; j < grid[i].length - 1; j++){
-      if (grid[i][j].getHueValue() < sorter1Maxima[0]){
-        sorter1Maxima[0] = grid[i][j].getHueValue();
-      }
-      else if (grid[i][j].getHueValue() > sorter1Maxima[1]){
-        sorter1Maxima[1] = grid[i][j].getHueValue();
-      }
-    }
-  }
-  for (int j = 0; j < grid[i].length - 1; j++){
-      }
-  return true;
-}
 
 void shuffle(){
   element temp;
