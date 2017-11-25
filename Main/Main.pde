@@ -92,6 +92,13 @@ void display(){
   }
 }
 
+void swap(int i, int j, int k){
+  element temp;
+  temp = grid[i][j];
+  grid[i][j] = grid[i][k];
+  grid[i][k] = temp;
+}
+
 class element{
   float hueValue;
   int number;
