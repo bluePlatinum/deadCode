@@ -6,10 +6,10 @@ element[] [] grid = new element[pxlCountY] [pxlCountX];
 
 
 //sorter 1 global variables
-float[] sorter1Maxima = {pxlCountX - 1, pxlCountX};
-int[] sorter1BlockLog;
+float sorter1Minimum;
 int sorter1BlockSize = 5;
 boolean sorter1Setup = false;
+int sorter1Last = 0;
 //end
 
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
@@ -37,7 +37,7 @@ void draw(){
     for (int i = 0; i < pxlCountY; i++){
       //switch (i){
        // case 0:
-          sorter0(i);
+          sorter1(i);
         //  break;
         //}
       display();
@@ -62,20 +62,34 @@ void sorter0(int i){
   return;
 }
 
-boolean sorter1(int i){
+void sorter1(int i){
+  int[] smallerArray = {};
+  Integer smallest;
   if (sorter1Setup == false){
     for (int j = 0; j < grid[i].length - 1; j++){
-      if (grid[i][j].getHueValue() < sorter1Maxima[0]){
-        sorter1Maxima[0] = grid[i][j].getHueValue();
+      if (grid[i][j].getHueValue() < sorter1Minimum){
+        sorter1Minimum = grid[i][j].getHueValue();
       }
-      else if (grid[i][j].getHueValue() > sorter1Maxima[1]){
-        sorter1Maxima[1] = grid[i][j].getHueValue();
+    }
+    sorter1Setup = true;
+    for (int j = sorter1Last; j < grid[i].length - 1; j++){
+      for (int k = 0; k < grid[i].length -1; k++){
+        if(grid[i][j].getHueValue() > grid[i][k].getHueValue()){
+          append(smallerArray, k);
+        }
+      }
+      if (smallerArray.length != 0){
+        smallest = smallerArray[0];
+        for (int l = 0; l < smallerArray.length - 1; l++){
+          if (grid[i][smallerArray[l]].getHueValue() < grid[i][smallest].getHueValue()){
+            smallest = smallerArray[l];
+          }
+        }
+        swap(i, j, smallest);
+        return;
       }
     }
   }
-  for (int j = 0; j < grid[i].length - 1; j++){
-      }
-  return true;
 }
 
 void shuffle(){
