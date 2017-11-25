@@ -7,13 +7,14 @@ element[] [] grid = new element[pxlCountY] [pxlCountX];
 
 void settings(){
     size(pxlSizeX * pxlCountX,pxlSizeY * pxlCountY);
+
 }
 
 
 void setup(){
   element temp;
   int tempInt;
-
+  frameRate(480);
   
   for (int i = 0; i < pxlCountY; i++){
     for (int j = 0; j < pxlCountX; j++){
@@ -26,11 +27,11 @@ void setup(){
 
 void draw(){
     for (int i = 0; i < pxlCountY; i++){
-      switch (i){
-        case 0:
+      //switch (i){
+       // case 0:
           sorter0(i);
-          break;
-        }
+        //  break;
+        //}
       display();
       }
   }
@@ -45,14 +46,10 @@ void keyPressed(){
 boolean sorter0(int i){
   element temp;
   for(int j = 0; j < grid[i].length - 1; j++){
-    println(grid[i][j].getHueValue());
-    println(grid[i][j+1].getHueValue());
-    println(grid[i][j].getHueValue() > grid[i][j+1].getHueValue());
     if(grid[i][j].getHueValue() > grid[i][j+1].getHueValue()){
       temp = grid[i][j];
       grid[i][j] = grid[i][j+1];
       grid[i][j+1] = temp;
-      println("test");
       return false;
     }
   }
