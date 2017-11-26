@@ -39,11 +39,11 @@ void setup(){
 
 void draw(){
   for (int i = 0; i < pxlCountY; i++){
-    //switch (i){
-     // case 0:
-        sorter1(i);
-      //  break;
-      //}
+     if(i < 21){
+       sorter1(i);
+     } else if (20 < i ){
+       sorter0(i);
+     }
     display();
     }
 }
@@ -100,6 +100,7 @@ void sorter1(int i){
       swap(i, j, smallest);
       swaps[i]++;
       sorter1Last[i] = j;
+
       return;
     }
   }
