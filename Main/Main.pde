@@ -6,13 +6,11 @@ element[] [] grid = new element[pxlCountY] [pxlCountX];
 
 
 //sorter 1 global variables
-float[] sorter1Minimum;
-int[] sorter1MinimumPos;
-int[] sorter1BlockSize;
-int[] sorter1Last;
-boolean[] sorter1Wiped;
-
-sorter1Init();
+float[] sorter1Minimum = new float[pxlCountY];
+int[] sorter1MinimumPos = new int[pxlCountY];
+int[] sorter1BlockSize = new int[pxlCountY];
+int[] sorter1Last = new int[pxlCountY];
+boolean[] sorter1Wiped = new boolean[pxlCountY];
 //end
 
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
@@ -25,7 +23,7 @@ void settings(){
 
 
 void setup(){
-  frameRate(4);
+  frameRate(480);
   
   for (int i = 0; i < pxlCountY; i++){
     for (int j = 0; j < pxlCountX; j++){
@@ -34,6 +32,7 @@ void setup(){
     }
   }
   display();
+  sorter1Reset();
 }
 
 void draw(){
@@ -74,6 +73,7 @@ void sorter1(int i){
     for (int j = 0; j < grid[i].length; j++){
       if (grid[i][j].getHueValue() < sorter1Minimum[i]){
         sorter1Minimum[i] = grid[i][j].getHueValue();
+        sorter1MinimumPos[i] = j;
       }
     }
     sorter1Wiped[i] = false;
@@ -103,20 +103,11 @@ void sorter1(int i){
 }
 
 void sorter1Reset(){
-  for (int i = 0; i < pxlCountX; i++){
+  for (int i = 0; i < pxlCountY; i++){
     sorter1MinimumPos[i] = pxlCountX - 1;
     sorter1BlockSize[i] = 5;
     sorter1Last[i] = 0;
     sorter1Wiped[i] = true;
-  }
-  return;
-}
-
-void sorter1Init(){
-  for (int i = 0; i < pxlCountX; i++){
-    sorter1MinimumPos[i] = pxlCountX - 1;
-    sorter1BlockSize[i] = 5;
-    sorter1Last[i] = 0;
   }
   return;
 }
