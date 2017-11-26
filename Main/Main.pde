@@ -82,15 +82,24 @@ void sorter1(int i){
     swap(i, sorter1MinimumPos, 0);
     return;
   }
-  for (int j = sorter1Last; j < grid[i].length - 1; j++){
-    for (int k = sorter1Last; k < grid[i].length -1; k++){
+  for (int j = sorter1Last; j < grid[i].length; j++){
+    println("outest loop");
+    for (int k = j; k < grid[i].length; k++){
+      println("inner loop");
       if(grid[i][j].getHueValue() > grid[i][k].getHueValue()){
-        append(smallerArray, k);
+        println("smaller");
+        smallerArray = append(smallerArray, k);
+        println("appended");
+        println(smallerArray);
+        println(smallerArray.length);
       }
     }
+    println("inner loop done");
+    println(smallerArray.length);
     if (smallerArray.length != 0){
+      println("array length if");
       smallest = smallerArray[0];
-      for (int l = 0; l < smallerArray.length - 1; l++){
+      for (int l = 0; l < smallerArray.length; l++){
         if (grid[i][smallerArray[l]].getHueValue() < grid[i][smallest].getHueValue()){
           smallest = smallerArray[l];
         }
@@ -103,7 +112,7 @@ void sorter1(int i){
 
 void sorter1Reset(){
   sorter1Minimum = 100;
-  sorter1MinimumPos = 64;
+  sorter1MinimumPos = 63;
   sorter1BlockSize = 5;
   sorter1Last = 0;
   
