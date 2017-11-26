@@ -1,8 +1,9 @@
 int pxlSizeX = 15;
 int pxlSizeY = 15;
 int pxlCountX = 64;
-int pxlCountY = 20;
+int pxlCountY = 40;
 element[] [] grid = new element[pxlCountY] [pxlCountX];
+
 
 
 //sorter 1 global variables
@@ -13,7 +14,8 @@ int[] sorter1Last = new int[pxlCountY];
 boolean[] sorter1Wiped = new boolean[pxlCountY];
 //end
 
-String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
+String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort","Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
+
 int[] swaps = new int[pxlCountY];
 
 void settings(){
@@ -64,6 +66,7 @@ void sorter0(int i){
   }
   return;
 }
+
 
 void sorter1(int i){
   int[] smallerArray = {};
@@ -159,6 +162,25 @@ void swap(int i, int j, int k){
   temp = grid[i][j];
   grid[i][j] = grid[i][k];
   grid[i][k] = temp;
+}
+
+void insert(int i, int j, int k){
+  //moves element j to position k
+  element temp;
+  if (j > k){
+    temp = grid[i][j];
+    for(int l = j; l > k; l--){
+      grid[i][l] = grid[i][l - 1];
+    }
+    grid[i][k] = temp;
+  }
+  else if (j < k) {
+    temp = grid[i][j];
+    for(int l = j; l < k; l++){
+      grid[i][l] = grid[i][l +1];
+    }
+    grid[i][k] = temp;
+  }
 }
 
 class element{
