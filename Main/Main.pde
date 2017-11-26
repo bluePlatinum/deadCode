@@ -81,17 +81,15 @@ void sorter1(int i){
     }
     sorter1Wiped[i] = false;
     swap(i, sorter1MinimumPos[i], 0);
+    swaps[i]++;
     return;
   }
   for (int j = sorter1Last[i]; j < grid[i].length; j++){
     for (int k = j; k < grid[i].length; k++){
       if(grid[i][j].getHueValue() > grid[i][k].getHueValue()){
         smallerArray = append(smallerArray, k);
-        println(smallerArray);
-        println(smallerArray.length);
       }
     }
-    println(smallerArray.length);
     if (smallerArray.length != 0){
       smallest = smallerArray[0];
       for (int l = 0; l < smallerArray.length; l++){
@@ -100,6 +98,7 @@ void sorter1(int i){
         }
       }
       swap(i, j, smallest);
+      swaps[i]++;
       return;
     }
   }
