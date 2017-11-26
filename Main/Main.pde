@@ -22,8 +22,6 @@ void setup(){
     }
   }
   display();
-  insert(0,32,0);
-  insert(1,0,32);
 }
 
 void draw(){
