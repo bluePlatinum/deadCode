@@ -22,8 +22,6 @@ void setup(){
     }
   }
   display();
-  insert(0,32,0);
-  insert(1,0,32);
 }
 
 void draw(){
@@ -48,11 +46,14 @@ void sorter0(int i){
   for(int j = 0; j < grid[i].length - 1; j++){
     if(grid[i][j].getHueValue() > grid[i][j+1].getHueValue()){
       swap(i,j,j+1);
-      swaps[i]++;
       return;
     }
   }
   return;
+}
+
+void sorter2(int i){
+  
 }
 
 
@@ -103,6 +104,7 @@ void swap(int i, int j, int k){
   temp = grid[i][j];
   grid[i][j] = grid[i][k];
   grid[i][k] = temp;
+  swaps[i]++;
 }
 
 void insert(int i, int j, int k){
@@ -122,6 +124,7 @@ void insert(int i, int j, int k){
     }
     grid[i][k] = temp;
   }
+  swaps[i]++;
 }
 
 class element{
