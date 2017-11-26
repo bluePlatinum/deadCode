@@ -99,6 +99,7 @@ void sorter1(int i){
       }
       swap(i, j, smallest);
       swaps[i]++;
+      sorter1Last[i] = j;
       return;
     }
   }
