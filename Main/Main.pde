@@ -3,6 +3,7 @@ int pxlSizeY = 15;
 int pxlCountX = 64;
 int pxlCountY = 40;
 element[] [] grid = new element[pxlCountY] [pxlCountX];
+ArrayList<ArrayList<Long>> timeUsed = new ArrayList<ArrayList<Long>>();
 
 
 
@@ -31,6 +32,7 @@ void setup(){
     for (int j = 0; j < pxlCountX; j++){
       grid[i][j] = new element();
       grid[i][j].init(j);
+      timeUsed.add(new ArrayList<Long>());
     }
   }
   display();
@@ -38,11 +40,16 @@ void setup(){
 }
 
 void draw(){
+  long timeTemp;
   for (int i = 0; i < pxlCountY; i++){
      if(i < 21){
+       timeTemp = System.nanoTime();
        sorter1(i);
+       timeUsed.get(i).add(System.nanoTime()-timeTemp);
      } else if (20 < i ){
+       timeTemp = System.nanoTime();
        sorter0(i);
+       timeUsed.get(i).add(System.nanoTime()-timeTemp);
      }
     display();
     }
@@ -119,6 +126,7 @@ void shuffle(){
   int tempInt; 
   for (int i = 0; i < grid.length; i++){
     swaps[i] = 0;
+    timeUsed.get(i).clear();
     for (int j = 0; j < grid[i].length; j++){
       tempInt = int(random(0,pxlCountX));
       temp = grid[i][j];
@@ -152,7 +160,19 @@ void display(){
   textAlign(LEFT);
   text(names[i], 2 , pxlSizeY * (i + 1) - 1);
   textAlign(RIGHT);
-  text(swaps[i], pxlSizeX * pxlCountX - 20, pxlSizeY * (i + 1) - 1);
+  String rightText;
+  float timeAverage;
+  if (timeUsed.get(i).size()>0) {
+  timeAverage = 0;
+    for(int j = 0; j < timeUsed.get(i).size(); j++){
+    timeAverage += timeUsed.get(i).get(j);
+    }
+  timeAverage /= float(timeUsed.get(i).size());
+  } else {
+  timeAverage = 0;
+  }
+  rightText = swaps[i] + "/" + round(timeAverage) + "ns";
+  text(rightText, pxlSizeX * pxlCountX - 20, pxlSizeY * (i + 1) - 1);
   }
 }
 
