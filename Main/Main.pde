@@ -141,7 +141,18 @@ void sorter2(int i){
   }
   else if (sorter2Phase[i] == 1){
     for (int j = sorter2Last[i]; j < grid[i].length; j++){
-      
+      for (int k = 0; k < sorter2BlockSeperators.length; k++){
+        if (grid[i][j].getHueValue() < sorter2BlockSeperators[i][0]) {
+          insert(i, j, 0);
+        }
+        else if (grid[i][j].getHueValue() > sorter2BlockSeperators[i][k] && grid[i][j].getHueValue() < sorter2BlockSeperators[i][k+1]){
+          insert(i, j, sorter2BlockPositions[i][k] - 1);
+        }
+        for (int l = k; l < sorter2BlockSeperators.length; l++){
+          sorter2BlockPositions[i][l]++;
+        }
+        swaps[i]++;
+      }
     }
   }
 }
