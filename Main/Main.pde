@@ -14,6 +14,10 @@ int[] sorter1Last = new int[pxlCountY];
 boolean[] sorter1Wiped = new boolean[pxlCountY];
 //end
 
+//sorter 2 global variables
+int sorter2SetupPhase;
+//end
+
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort","Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
 
 int[] swaps = new int[pxlCountY];
@@ -114,6 +118,10 @@ void sorter1Reset(){
     sorter1Wiped[i] = true;
   }
   return;
+}
+
+void sorter2(){
+  
 }
 
 void shuffle(){
