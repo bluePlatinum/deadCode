@@ -15,7 +15,11 @@ boolean[] sorter1Wiped = new boolean[pxlCountY];
 //end
 
 //sorter 2 global variables
-int sorter2SetupPhase;
+int[] sorter2Phase = new int[pxlCountY];
+int sorter2BlockNumber = 5;
+int[][] sorter2BlockPositions = new int[pxlCountY][sorter2BlockNumber];
+float[][] sorter2BlockSeperators = new float[pxlCountY][sorter2BlockNumber];
+int[] sorter2Last = new int[sorter2BlockNumber];
 //end
 
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort","Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
@@ -120,7 +124,29 @@ void sorter1Reset(){
   return;
 }
 
-void sorter2(){
+void sorter2(int i){
+  if (sorter2Phase[i] == 0){
+    for (int j = 0; j < sorter2BlockNumber; j++){
+      if (grid[i][j].getHueValue() > grid[i][j+1].getHueValue()){
+        swap(i, j, j+1);
+        swaps[i]++;
+        return;
+      }
+    }
+    for (int j = 0; j < sorter2BlockNumber; j++){
+      sorter2BlockSeperators[i][j] = grid[i][j].getHueValue();
+      sorter2BlockPositions[i][j] = j;
+    }
+    sorter2Phase[i]++;
+  }
+  else if (sorter2Phase[i] == 1){
+    for (int j = sorter2Last[i]; j < grid[i].length; j++){
+      
+    }
+  }
+}
+
+void sorter2Reset(){
   
 }
 
