@@ -19,7 +19,7 @@ int[] sorter2Phase = new int[pxlCountY];
 int sorter2BlockNumber = 5;
 int[][] sorter2BlockPositions = new int[pxlCountY][sorter2BlockNumber];
 float[][] sorter2BlockSeperators = new float[pxlCountY][sorter2BlockNumber];
-int[] sorter2Last = new int[sorter2BlockNumber];
+int[] sorter2Last = new int[pxlCountY];
 //end
 
 String[] names = {"Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort","Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort", "Quicksort"};
