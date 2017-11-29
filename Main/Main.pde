@@ -4,7 +4,7 @@ int pxlCountX = 64;
 int pxlCountY = 40;
 element[] [] grid = new element[pxlCountY] [pxlCountX];
 ArrayList<ArrayList<Long>> timeUsed = new ArrayList<ArrayList<Long>>();
-
+boolean[] lineSorted = new boolean[pxlCountY];
 
 
 //sorter 1 global variables
@@ -42,14 +42,19 @@ void setup(){
 void draw(){
   long timeTemp;
   for (int i = 0; i < pxlCountY; i++){
+     lineSorted[i] = false;
      if(i < 21){
        timeTemp = System.nanoTime();
        sorter1(i);
-       timeUsed.get(i).add(System.nanoTime()-timeTemp);
+       if(!lineSorted[i]) {
+         timeUsed.get(i).add(System.nanoTime()-timeTemp);
+       }
      } else if (20 < i ){
        timeTemp = System.nanoTime();
        sorter0(i);
-       timeUsed.get(i).add(System.nanoTime()-timeTemp);
+       if(!lineSorted[i]) {
+         timeUsed.get(i).add(System.nanoTime()-timeTemp);
+       }
      }
     display();
     }
@@ -181,6 +186,7 @@ void swap(int i, int j, int k){
   temp = grid[i][j];
   grid[i][j] = grid[i][k];
   grid[i][k] = temp;
+  lineSorted[i] = false;
 }
 
 void insert(int i, int j, int k){
@@ -200,6 +206,7 @@ void insert(int i, int j, int k){
     }
     grid[i][k] = temp;
   }
+  lineSorted[i] = false;
 }
 
 class element{
