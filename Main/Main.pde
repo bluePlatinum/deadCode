@@ -33,6 +33,7 @@ void setup(){
       grid[i][j] = new element();
       grid[i][j].init(j);
       timeUsed.add(new ArrayList<Long>());
+      lineSorted[i] = false;
     }
   }
   display();
@@ -42,7 +43,7 @@ void setup(){
 void draw(){
   long timeTemp;
   for (int i = 0; i < pxlCountY; i++){
-     lineSorted[i] = false;
+     lineSorted[i] = true;
      if(i < 21){
        timeTemp = System.nanoTime();
        sorter1(i);
@@ -131,6 +132,7 @@ void shuffle(){
   int tempInt; 
   for (int i = 0; i < grid.length; i++){
     swaps[i] = 0;
+    lineSorted[i] = false;
     timeUsed.get(i).clear();
     for (int j = 0; j < grid[i].length; j++){
       tempInt = int(random(0,pxlCountX));
