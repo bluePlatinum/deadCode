@@ -197,7 +197,6 @@ void sorter2(int i){
     }
   }
   else if (sorter2Phase[i] == 2){
-    println("sorter phase 2");
     sorter0(i);
     return;
   }
