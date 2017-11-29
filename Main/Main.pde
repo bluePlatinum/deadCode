@@ -44,7 +44,6 @@ void setup(){
   display();
   sorter1Reset();
   sorter2Reset();
-  for (int i = 0; i < pxlCountY; i++){println(sorter2BlockSeperators[i].length);}
 }
 
 void draw(){
@@ -62,6 +61,7 @@ void keyPressed(){
   if (key == 115){
   shuffle();
   sorter1Reset();
+  sorter2Reset();
   }
 }
 
@@ -143,11 +143,11 @@ void sorter2(int i){
   }
   else if (sorter2Phase[i] == 1){
     for (int j = sorter2Last[i]; j < grid[i].length; j++){
-      for (int k = 0; k < sorter2BlockSeperators.length; k++){
+      for (int k = 0; k < sorter2BlockSeperators[i].length; k++){
         if (grid[i][j].getHueValue() < sorter2BlockSeperators[i][0]) {
           insert(i, j, 0);
           
-          for (int shift = 0; shift < sorter2BlockPositions.length; shift++){
+          for (int shift = 0; shift < sorter2BlockPositions[i].length; shift++){
             sorter2BlockPositions[i][shift]++;
           }
           sorter2Last[i]++;
@@ -160,7 +160,7 @@ void sorter2(int i){
         else if (grid[i][j].getHueValue() > sorter2BlockSeperators[i][k] && grid[i][j].getHueValue() < sorter2BlockSeperators[i][k+1]){
           insert(i, j, sorter2BlockPositions[i][k] + 1);
           
-          for (int shift = k + 1; shift < sorter2BlockPositions.length; shift++){
+          for (int shift = k + 1; shift < sorter2BlockPositions[i].length; shift++){
             sorter2BlockPositions[i][shift]++;
           }
           sorter2Last[i]++;
@@ -184,6 +184,7 @@ void sorter2(int i){
     }
   }
   else if (sorter2Phase[i] == 2){
+    println("sorter phase 2");
     sorter0(i);
     return;
   }
